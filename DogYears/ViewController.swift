@@ -24,10 +24,27 @@ class ViewController: UIViewController {
     }
 
     @IBAction func convertYearsButton(sender: AnyObject) {
-        var dogYearsConversion = humanYearsText.text.toInt()! * 7
-        dogYearsLabel.text = dogYearsLabel.text! + " \(dogYearsConversion)"
+        let dogYearsConversion = humanYearsText.text.toInt()! * 7
+        dogYearsLabel.text = " \(dogYearsConversion)  Dog Years"
         humanYearsText.text = ""
+        humanYearsText.resignFirstResponder()
     }
 
+    @IBAction func convertRealYearsButton(sender: AnyObject) {
+        let stringFromTextField = humanYearsText.text
+        let doubleFromTextField = Double((stringFromTextField as NSString).doubleValue)
+        
+        var realDogYears:Double
+        
+        if(doubleFromTextField > 2){
+            realDogYears = (10.5 * 2) + (doubleFromTextField - 2) * 4
+            dogYearsLabel.text = " \(realDogYears) Dog Years"
+        }else{
+            realDogYears = doubleFromTextField + 10.5
+        }
+        dogYearsLabel.text = "\(realDogYears)" + " Real dog Years"
+        humanYearsText.text = ""
+        humanYearsText.resignFirstResponder()
+    }
 }
 
